@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FirstList"
+             x:Class="FirstList.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Heores">
+                        <EntryCell x:Name="entry_hero" Text="" Label="Hero"/>
+                        <EntryCell x:Name="entry_description" Text="" Label="Description"/>
+                        
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button x:Name="button_add" Text="Add Hero" Clicked="addHero"></Button>
+            <ListView x:Name="HeroesView" ItemSelected="OnSelection">
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <TextCell Text="{Binding DisplayName}" Detail="{Binding Description}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
