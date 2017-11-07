@@ -23,17 +23,6 @@ namespace FirstList
             heroes.Add(new Hero { DisplayName = "Batman", Description = "I'm the night" });
             heroes.Add(new Hero { DisplayName = "Superman", Description = "God among humans" });
             heroes.Add(new Hero { DisplayName = "Spiderman", Description = "closeby hero" });
-
-            var request = HttpWebRequest.Create(string.Format(@"https://opentdb.com/api.php?amount=10", "198440")); request.ContentType = "application/json"; request.Method = "GET"; using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-            {
-                if (response.StatusCode != HttpStatusCode.OK) Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", response.StatusCode); using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                {
-                    var content = reader.ReadToEnd(); if (string.IsNullOrWhiteSpace(content))
-                    {
-                        Console.Out.WriteLine("Response Body: \r\n {0}", content); dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(content); Console.Out.WriteLine("response code: " + data.response_code);
-                    }
-                }
-            }
         }
 
         void addHero(object sender, EventArgs arg)
